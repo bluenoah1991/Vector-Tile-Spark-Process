@@ -2,6 +2,9 @@
 
 ***Vector Tile Spark Process*** 允许开发者和数据研究员使用Spark平台将地理空间数据切分到Hadoop SequeueFiles文件中.
 
+效果来自于我们用于[预览的例子](https://github.com/codemeow5/Vector-Tile-Spark-Process/tree/master/examples).  
+![Preview](examples/preview.png)
+
 ## 特性
 
 - 基于Apache Spark进行并行处理
