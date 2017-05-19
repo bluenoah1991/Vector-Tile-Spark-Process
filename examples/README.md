@@ -2,6 +2,8 @@
 
 Processing Beijing OpenStreetMap data and Preview it  
 
+![Preview](preview.png)
+
 ## Download raw data and import to PostGIS database
 
 1. Download [beijing_china.osm.pbf](https://s3.amazonaws.com/metro-extracts.mapzen.com/beijing_china.osm.pbf) from [Mapzen](https://mapzen.com/data/metro-extracts/metro/beijing_china/)  
@@ -57,17 +59,17 @@ Processing Beijing OpenStreetMap data and Preview it
 
 ## Run Simple Web Server
 
-1. Install SBT scripts runtime ([http://www.scala-sbt.org/0.13/docs/Scripts.html](http://www.scala-sbt.org/0.13/docs/Scripts.html))  
-
+#### Install SBT scripts runtime ([http://www.scala-sbt.org/0.13/docs/Scripts.html](http://www.scala-sbt.org/0.13/docs/Scripts.html))  
+	
 	// Installing conscript  
 	export CONSCRIPT_HOME="$HOME/.conscript"  
 	export PATH=$CONSCRIPT_HOME/bin:$PATH  
 	wget https://raw.githubusercontent.com/foundweekends/conscript/master/setup.sh -O - | sh
-
+	
 	//Install command screpl and scalas  
 	cs sbt/sbt --branch 0.13  
-
-2. Start server  
+	
+#### Start server  
 
 	./scripts/SimpleWebServer.sh hdfs://hostname:port/preview_data  
 
