@@ -2,6 +2,9 @@
 
 The ***Vector Tile Spark Process*** allows developers and data scientists clip geographic data into Hadoop SequeueFiles on Spark platform.
 
+The effect comes from [Preview Example](https://github.com/codemeow5/Vector-Tile-Spark-Process/tree/master/examples).  
+![Preview](examples/preview.png)
+
 ## Features
 
 - Parallel processing based on Apache Spark
