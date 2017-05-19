@@ -3,7 +3,7 @@ package org.ieee.codemeow.geometric.spark
 import org.apache.hadoop.io.compress.GzipCodec
 import org.apache.spark.sql._
 import org.ieee.codemeow.geometric.{Feature, GeometricUtils, MvtBuilder}
-import org.ieee.codemeow.geometric.spark.data.{AbstractDataProvider}
+import org.ieee.codemeow.geometric.spark.data.AbstractDataProvider
 
 /**
   * Created by CodeMeow on 2017/5/13.
@@ -43,10 +43,10 @@ object VectorTileTask {
       ds1.union(ds2)
     })
 
-    layersCollection.rdd.saveAsSequenceFile(config.sequeueFileDir, Some(classOf[GzipCodec]))
+    layersCollection.rdd.saveAsSequenceFile(config.sequenceFileDir, Some(classOf[GzipCodec]))
   }
 
-  def buildLayerRDD(spark: SparkSession, dataSource: AbstractDataProvider, layer: LayerConfiguration): Dataset[(Long, Array[Byte])] ={
+  def buildLayerRDD(spark: SparkSession, dataSource: AbstractDataProvider, layer: LayerConfiguration): Dataset[(String, Array[Byte])] ={
     // Ref http://stackoverflow.com/questions/38664972/why-is-unable-to-find-encoder-for-type-stored-in-a-dataset-when-creating-a-dat
     import spark.implicits._
     // Ref http://stackoverflow.com/questions/36648128/how-to-store-custom-objects-in-dataset
@@ -84,13 +84,13 @@ object VectorTileTask {
     })
 
     val tileWithBytesCollection = layerMvtCollection.map(tuple => {
-      val layer_ = MvtBuilder.buildLayer(layer.layerName, tuple._2)
+      val layer_ = MvtBuilder.buildLayer(layer.layerName, tuple._1, tuple._2)
       val b = MvtBuilder.buildMvt(layer_).toByteArray
       (tuple._1, b)
     })
 
     val tileCodeWithBytesCollection = tileWithBytesCollection.map(tuple => {
-      (GeometricUtils.encodeTile(tuple._1), tuple._2)
+      (GeometricUtils.encodeTile(layer.layerName, tuple._1), tuple._2)
     })
 
     tileCodeWithBytesCollection

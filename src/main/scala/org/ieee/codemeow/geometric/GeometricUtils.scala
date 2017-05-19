@@ -62,16 +62,20 @@ object GeometricUtils {
     })
   }
 
-  def encodeTile(tile: (Long, Long, Long)): Long ={
+  def encodeTile(layerName: String, tile: (Long, Long, Long)): String ={
     val (row, column, zoom) = tile
-    (row % 0x1000000L) << 40 | (column % 0x1000000L) << 16 | (zoom % 0x10000L)
+    val code = (row % 0x1000000L) << 40 | (column % 0x1000000L) << 16 | (zoom % 0x10000L)
+    s"${layerName}:${code}"
   }
 
-  def decodeTile(code: Long): (Long, Long, Long) ={
+  def decodeTile(key: String): (String, (Long, Long, Long)) ={
+    val x = key.split(":").toSeq
+    val layerName = x(0)
+    val code = x(1).toLong
     val row = code >> 40
     val column = (code >> 16) % 0x1000000L
-    val zoom = code % 0x1000000000000L
-    (row, column, zoom)
+    val zoom = code % 0x10000L
+    (layerName, (row, column, zoom))
   }
 
 }

@@ -36,7 +36,7 @@ The ***Vector Tile Spark Process*** allows developers and data scientists clip g
 	# vectortile-spark-process.yml
 
 	appName: "Vector Tile Process"
-	sequeueFileDir: "hdfs:///path/to"
+	sequenceFileDir: "hdfs:///path/to"
 	layers:
 	  - layerName: "layerName"
 	    minZoom: "0"

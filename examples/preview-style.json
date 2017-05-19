@@ -1,0 +1,26 @@
+{
+  "version": 8,
+  "name": "Preview Style For Vector Tile Spark Process",
+  "sources": {
+    "simple_web_server": {
+      "type": "vector",
+      "tileSize": 512,
+      "tiles": [
+        "http://127.0.0.1:9000/lines/{z}/{x}/{y}.pbf"
+      ],
+      "minzoom": 3,
+      "maxzoom": 18
+    }
+  },
+  "layers": [
+    {
+      "id": "lines",
+      "type": "line",
+      "source": "simple_web_server",
+      "source-layer": "lines",
+      "paint": {
+        "line-color": "#333333"
+      }
+    }
+  ]
+}

@@ -30,12 +30,12 @@ class MainConfiguration (
                           @JsonProperty("appName") _appName: String,
                           @JsonProperty("bbox") _bbox: (Double, Double, Double, Double), // lat1, lon1, lat2, lon2
                           @JsonProperty("layers") _layers: Array[LayerConfiguration],
-                          @JsonProperty("sequeueFileDir") _sequeueFileDir: String
+                          @JsonProperty("sequenceFileDir") _sequenceFileDir: String
                         ) extends Serializable{
   val appName = Preconditions.checkNotNull(_appName, "appName cannot be null": Object)
   val bbox = _bbox
   val layers = Preconditions.checkNotNull(_layers, "layers cannot be null": Object)
-  val sequeueFileDir = Preconditions.checkNotNull(_sequeueFileDir, "sequeueFileDir cannot be null": Object)
+  val sequenceFileDir = Preconditions.checkNotNull(_sequenceFileDir, "sequenceFileDir cannot be null": Object)
 }
 
 class LayerConfiguration (

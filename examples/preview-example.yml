@@ -1,0 +1,33 @@
+---
+# preview-example.yml
+
+appName: "Preview Example Task"
+sequenceFileDir: "hdfs:///preview_data"
+layers:
+  - layerName: "lines"
+    minZoom: "3"
+    maxZoom: "18"
+    dataProvider: "org.ieee.codemeow.geometric.spark.data.SQLDataProvider"
+    kwargs:
+      url: "jdbc:postgresql://hostname/beijing_china_osm"
+      dbtables:
+        planet_osm_line: "public.planet_osm_line"
+      user: "postgres"
+      password: "postgres"
+      zooms:
+        3: "SELECT osm_id AS __id__, ST_GeomFromWKB(wkb_way) AS __geometry__ FROM planet_osm_line"
+        4: "SELECT osm_id AS __id__, ST_GeomFromWKB(wkb_way) AS __geometry__ FROM planet_osm_line"
+        5: "SELECT osm_id AS __id__, ST_GeomFromWKB(wkb_way) AS __geometry__ FROM planet_osm_line"
+        6: "SELECT osm_id AS __id__, ST_GeomFromWKB(wkb_way) AS __geometry__ FROM planet_osm_line"
+        7: "SELECT osm_id AS __id__, ST_GeomFromWKB(wkb_way) AS __geometry__ FROM planet_osm_line"
+        8: "SELECT osm_id AS __id__, ST_GeomFromWKB(wkb_way) AS __geometry__ FROM planet_osm_line"
+        9: "SELECT osm_id AS __id__, ST_GeomFromWKB(wkb_way) AS __geometry__ FROM planet_osm_line"
+        10: "SELECT osm_id AS __id__, ST_GeomFromWKB(wkb_way) AS __geometry__ FROM planet_osm_line"
+        11: "SELECT osm_id AS __id__, ST_GeomFromWKB(wkb_way) AS __geometry__ FROM planet_osm_line"
+        12: "SELECT osm_id AS __id__, ST_GeomFromWKB(wkb_way) AS __geometry__ FROM planet_osm_line"
+        13: "SELECT osm_id AS __id__, ST_GeomFromWKB(wkb_way) AS __geometry__ FROM planet_osm_line"
+        14: "SELECT osm_id AS __id__, ST_GeomFromWKB(wkb_way) AS __geometry__ FROM planet_osm_line"
+        15: "SELECT osm_id AS __id__, ST_GeomFromWKB(wkb_way) AS __geometry__ FROM planet_osm_line"
+        16: "SELECT osm_id AS __id__, ST_GeomFromWKB(wkb_way) AS __geometry__ FROM planet_osm_line"
+        17: "SELECT osm_id AS __id__, ST_GeomFromWKB(wkb_way) AS __geometry__ FROM planet_osm_line"
+        18: "SELECT osm_id AS __id__, ST_GeomFromWKB(wkb_way) AS __geometry__ FROM planet_osm_line"

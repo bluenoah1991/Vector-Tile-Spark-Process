@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Preview - Vector Tile Spark Process</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body>
+<div id='map' style='width: 100%; height: 800px;'></div>
+<script>
+// Ref https://www.mapbox.com/mapbox-gl-js/api/
+mapboxgl.accessToken = 'pk.eyJ1IjoiY29kZW1lb3ciLCJhIjoiNTE4ZDBiNzMzN2U5YWY4OTFkNGY4YmQ2Mzc2ZTE3NjgifQ.IAGuJibRXk-WQo0tpiVNPA';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: './preview-style.json',
+    minZoom: 3,
+    maxZoom: 18,
+    hash: true,
+    center: [116.3971, 39.9169],
+    zoom: 15
+});
+
+// Ref https://www.mapbox.com/mapbox-gl-js/api/#navigationcontrol
+var nav = new mapboxgl.NavigationControl();
+map.addControl(nav, 'top-left');
+</script>
+</body>
+</html>

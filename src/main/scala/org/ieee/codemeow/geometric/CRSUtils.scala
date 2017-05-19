@@ -34,6 +34,14 @@ object CRSUtils {
     return (a._1, b._2, b._1, a._2)
   }
 
+  // Returns the Mercator coordinate (x, y) bounding box of a tile
+  def boundsMercator(tile: (Long, Long, Long)): (Double, Double, Double, Double) ={
+    val (row, column, zoom) = tile
+    val a = upperLeftMercator(row + 1, column, zoom)
+    val b = upperLeftMercator((row, column + 1, zoom))
+    return (a._1, b._1, a._2, b._2)
+  }
+
   // Returns the Spherical Mercator (x, y) in meters
   def lnglatToMercator(lng: Double, lat: Double): (Double, Double) ={
     val x = RADIUS * math.toRadians(lng)
